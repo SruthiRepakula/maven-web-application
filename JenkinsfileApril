@@ -1,4 +1,12 @@
 node {
+
+  //echo "GitHub BranhName ${env.BRANCH_NAME}"
+  //echo "Jenkins Job Number ${env.BUILD_NUMBER}"
+  echo "Jenkins Node Name ${env.NODE_NAME}"
+  
+  echo "Jenkins Home ${env.JENKINS_HOME}"
+  echo "Jenkins URL ${env.JENKINS_URL}"
+  echo "JOB Name ${env.JOB_NAME}"
 	
 	def mavenHome = tool name: "maven3.8.5"
 	stage('CheckOutCode'){
@@ -19,10 +27,10 @@ node {
 		sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@15.206.178.93:/opt/apache-tomcat-9.0.62/webapps/"
 	}
 	}
-	stage('SendEmailNotification'){
+	/*stage('SendEmailNotification'){
 		mail bcc: '', body: '''Build Over....
 
 Regards,
 Mithun Software Solutions.''', cc: 'sruthirepakula13@gmail.com', from: '', replyTo: '', subject: 'Build over!!!!', to: 'sruthirepakula13@gmail.com'
-	}
+	}*/
 }
